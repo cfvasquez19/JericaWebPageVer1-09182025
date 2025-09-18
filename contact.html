@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <nav>
+        <button class="book-now" onclick="handleBookNow()">Book Now</button>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="staff.html">Staff</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <header>
+        <img src="assets/images/IMG_8873-1.webp" alt="Header Image" class="header-img">
+        <h1>Contact Us</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Start Your Health Journey Now!</h2>
+            <form id="contactForm" action="https://formspree.io/f/xwkzqgqg" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+            <div id="formResponse"></div>
+        </section>
+        <p style="font-weight: bold; text-align: center;">Or reach us directly!</p>
+        <button class="book-now" style="margin: 2rem auto; display: block;" onclick="handleBookNow()">Book Now</button>
+    </main>
+    <footer>
+        <div class="footer-sections">
+            <div class="footer-hours">
+                <img src="assets/images/clock-outline.svg" alt="Hours of Operation" style="width:32px;height:32px;margin-bottom:0.5rem;">
+                Monday
+                By appointment only<br>
+                Tuesday
+                By appointment only<br>
+                Wednesday
+                By appointment only<br>
+                Thursday
+                By appointment only<br>
+                Friday
+                By appointment only<br>
+                Saturday
+                Closed<br>
+                Sunday
+                By appointment only
+            </div>
+            <div class="footer-location">
+                <img src="assets/images/map-pin-outline.svg" alt="Location" style="width:32px;height:32px;margin-bottom:0.5rem;display:block;margin-left:auto;margin-right:auto;">
+                <p>112 9th St<br>
+                Huntington Beach, CA 92648</p>
+                <button class="map-it-btn" onclick="handleMapIt()">Map it!</button>
+            </div>
+            <div class="footer-book">
+                <img src="assets/images/phone-outline.svg" alt="Book" style="width:32px;height:32px;margin-bottom:0.5rem;display:block;margin-left:auto;margin-right:auto;">
+                <button class="book-now-footer" onclick="handleBookNow()">Book Now</button>
+            </div>
+            <div class="footer-social">
+                <img src="assets/images/social-outline.svg" alt="Social Media" style="width:32px;height:32px;margin-bottom:0.5rem;display:block;margin-left:auto;margin-right:auto;">
+                <!-- Add your social media links below -->
+                <a href="https://www.instagram.com/_jericas.journey?igsh=MTc4MmM1YmI2Ng==" target="_blank">Instagram</a><br>
+                <a href="https://www.facebook.com/jerica.scott.1" target="_blank">Facebook</a><br>
+                <a href="https://www.tiktok.com/@jericafitness" target="_blank">TikTok</a>
+            </div>
+        </div>
+        <p class="footer-copyright">&copy; 2025 MassageQuest Website. All rights reserved.</p>
+    </footer>
+    <script src="assets/scripts.js"></script>
+    <script>
+    function handleBookNow() {
+        const message = encodeURIComponent("Hello, I am ____ , and I saw your Massage Quest website. Can I book a massage for ___");
+        if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            if (confirm('Would you like to call (909) 747-2735?')) {
+                window.location.href = 'tel:9097472735';
+            } else {
+                window.location.href = 'sms:9097472735?body=' + message;
+            }
+        } else {
+            window.location.href = 'mailto:jericascott@yahoo.com?subject=Massage Booking Inquiry&body=' + message;
+        }
+    }
+    </script>
+</body>
+</html>

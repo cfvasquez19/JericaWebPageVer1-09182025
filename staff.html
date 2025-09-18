@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the Staff | MassageQuest</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <nav>
+        <button class="book-now" onclick="handleBookNow()">Book Now</button>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="staff.html">Staff</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <header>
+        <img src="assets/images/IMG_8873-1.webp" alt="Header Image" class="header-img">
+        <h1>Meet the Staff</h1>
+        <p>Get to know our professional and caring team.</p>
+    </header>
+    <main>
+        <section class="staff-list">
+            <div class="staff-card">
+                <img src="assets/images/IMG_8873-1.webp" alt="Jerica - Massage Therapist" class="staff-img">
+                <h2>Jerica</h2>
+                <p>I starting doing massage therapy in 2011<br>I truly love what I do!! I want to add quality to your life and bring you nothing but pure joy. I am intuitive, caring, open minded, and am flowing with positive energy. I specialize in many different modalities of massage and also customize your massage to your needs. I take pride in providing top notch quality care. I look forward to meeting you!</p>
+                <h6>AI Generated below</h6>
+                <p>Certified Massage Therapist & Owner<br>Specializing in Swedish, deep tissue, Lomi Lomi, sports, and light touch massage. Passionate about helping clients achieve relaxation and wellness.</p>
+            </div>
+            <!-- Add more staff-card sections as needed -->
+        </section>
+    </main>
+    <footer>
+        <div class="footer-sections">
+            <div class="footer-hours">
+                <img src="assets/images/clock-outline.svg" alt="Hours of Operation" style="width:32px;height:32px;margin-bottom:0.5rem;">
+                Monday
+                By appointment only<br>
+                Tuesday
+                By appointment only<br>
+                Wednesday
+                By appointment only<br>
+                Thursday
+                By appointment only<br>
+                Friday
+                By appointment only<br>
+                Saturday
+                Closed<br>
+                Sunday
+                By appointment only
+            </div>
+            <div class="footer-location">
+                <img src="assets/images/map-pin-outline.svg" alt="Location" style="width:32px;height:32px;margin-bottom:0.5rem;display:block;margin-left:auto;margin-right:auto;">
+                <p>112 9th St<br>
+                Huntington Beach, CA 92648</p>
+                <button class="map-it-btn" onclick="handleMapIt()">Map it!</button>
+            </div>
+            <div class="footer-book">
+                <img src="assets/images/phone-outline.svg" alt="Book" style="width:32px;height:32px;margin-bottom:0.5rem;display:block;margin-left:auto;margin-right:auto;">
+                <button class="book-now-footer" onclick="handleBookNow()">Book Now</button>
+            </div>
+            <div class="footer-social">
+                <img src="assets/images/social-outline.svg" alt="Social Media" style="width:32px;height:32px;margin-bottom:0.5rem;display:block;margin-left:auto;margin-right:auto;">
+                <!-- Add your social media links below -->
+                <a href="https://www.instagram.com/_jericas.journey?igsh=MTc4MmM1YmI2Ng==" target="_blank">Instagram</a><br>
+                <a href="https://www.facebook.com/jerica.scott.1" target="_blank">Facebook</a><br>
+                <a href="https://www.tiktok.com/@jericafitness" target="_blank">TikTok</a>
+            </div>
+        </div>
+        <p class="footer-copyright">&copy; 2025 MassageQuest Website. All rights reserved.</p>
+    </footer>
+    <script src="assets/scripts.js"></script>
+    <script>
+    function handleBookNow() {
+        const message = encodeURIComponent("Hello, I am ____ , and I saw your Massage Quest website. Can I book a massage for ___");
+        if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            if (confirm('Would you like to call (909) 747-2735?')) {
+                window.location.href = 'tel:9097472735';
+            } else {
+                window.location.href = 'sms:9097472735?body=' + message;
+            }
+        } else {
+            window.location.href = 'mailto:jericascott@yahoo.com?subject=Massage Booking Inquiry&body=' + message;
+        }
+    }
+    </script>
+</body>
+</html>

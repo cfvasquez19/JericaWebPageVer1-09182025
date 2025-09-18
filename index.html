@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MassageQuest - Home</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <style>
+    .fullscreen-modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0; top: 0; width: 100vw; height: 100vh;
+        background: rgba(0,0,0,0.85);
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+    .fullscreen-modal img {
+        max-width: 80vw;
+        max-height: 80vh;
+        box-shadow: 0 0 24px #000;
+        border-radius: 10px;
+        background: #fff;
+    }
+    .close-modal {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        font-size: 2.5rem;
+        color: #fff;
+        cursor: pointer;
+        z-index: 1010;
+    }
+    .modal-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0,0,0,0.5);
+        color: #fff;
+        border: none;
+        font-size: 2.5rem;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        z-index: 1010;
+        border-radius: 50%;
+        transition: background 0.2s;
+    }
+    .modal-prev { left: 2rem; }
+    .modal-next { right: 2rem; }
+    .modal-arrow:focus { outline: 2px solid #fff; }
+    @media (max-width: 700px) {
+        .fullscreen-modal img { max-width: 95vw; max-height: 60vh; }
+        .modal-prev { left: 0.5rem; }
+        .modal-next { right: 0.5rem; }
+        .close-modal { top: 1rem; right: 1rem; font-size: 2rem; }
+    }
+    </style>
+</head>
+<body>
+    <nav>
+        <button class="book-now" onclick="handleBookNow()">Book Now</button>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="staff.html">Staff</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <header>
+        <img src="assets/images/IMG_8873-1.webp" alt="Header Image" class="header-img">
+        <h1>MassageQuest</h1>
+        <h1>Huntington Beach Massage | Massage Bliss by Jerica</h1>
+        <p>We provide professional high-quality services to help you succeed.</p>
+    </header>
+    <main>
+        <section>
+            <h2>Allow my healing hands to relax and rejuvenate your body, mind and spirit</h2>
+            <p>Experience complete bliss and relaxation under the care of my healing hands and positive energy. Whether you have sore muscles or need to relieve stress, I provide you with the ultimate care. I specialize in Swedish, deep tissue, Lomi Lomi, sports, and light touch massage. However, I can customize the massage to match your wants and needs. I am a mobile therapist and can come to you or you can come to my studio in Huntington Beach. I love what I do and it shows in my work. I look forward to meeting you!</p>
+        </section>
+        <section class="gallery">
+            <div class="gallery-slider">
+                <button class="slider-btn prev">&#10094;</button>
+                <div class="slider-window">
+                    <img src="assets/images/IMG_8899.webp" alt="Sample 1" class="slider-img">
+                    <img src="assets/images/IMG_8888.webp" alt="Sample 2" class="slider-img">
+                    <img src="assets/images/IMG_8877.webp" alt="Sample 3" class="slider-img">
+                </div>
+                <button class="slider-btn next">&#10095;</button>
+            </div>
+        </section>
+    </main>
+    <div id="fullscreen-modal" class="fullscreen-modal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <button class="modal-arrow modal-prev" id="modalPrev" aria-label="Previous image">&#10094;</button>
+        <img id="fullscreen-img" src="" alt="Expanded Gallery Image">
+        <button class="modal-arrow modal-next" id="modalNext" aria-label="Next image">&#10095;</button>
+    </div>
+    <footer>
+        <div class="footer-sections">
+            <div class="footer-hours">
+                <img src="assets/images/clock-outline.svg" alt="Hours of Operation" style="width:32px;height:32px;margin-bottom:0.5rem;">
+                Monday
+                By appointment only<br>
+                Tuesday
+                By appointment only<br>
+                Wednesday
+                By appointment only<br>
+                Thursday
+                By appointment only<br>
+                Friday
+                By appointment only<br>
+                Saturday
+                Closed<br>
+                Sunday
+                By appointment only
+            </div>
+            <div class="footer-location">
+                <img src="assets/images/map-pin-outline.svg" alt="Location" style="width:32px;height:32px;margin-bottom:0.5rem;display:block;margin-left:auto;margin-right:auto;">
+                <p>112 9th St<br>
+                Huntington Beach, CA 92648</p>
+                <button class="map-it-btn" onclick="handleMapIt()">Map it!</button>
+            </div>
+            <div class="footer-book">
+                <img src="assets/images/phone-outline.svg" alt="Book" style="width:32px;height:32px;margin-bottom:0.5rem;display:block;margin-left:auto;margin-right:auto;">
+                <button class="book-now-footer" onclick="handleBookNow()">Book Now</button>
+            </div>
+            <div class="footer-social">
+                <img src="assets/images/social-outline.svg" alt="Social Media" style="width:32px;height:32px;margin-bottom:0.5rem;display:block;margin-left:auto;margin-right:auto;">
+                <!-- Add your social media links below -->
+                <a href="https://www.instagram.com/_jericas.journey?igsh=MTc4MmM1YmI2Ng==" target="_blank">Instagram</a><br>
+                <a href="https://www.facebook.com/jerica.scott.1" target="_blank">Facebook</a><br>
+                <a href="https://www.tiktok.com/@jericafitness" target="_blank">TikTok</a>
+            </div>
+        </div>
+        <p class="footer-copyright">&copy; 2025 MassageQuest Website. All rights reserved.</p>
+    </footer>
+    <script src="assets/scripts.js"></script>
+    <script>
+    function handleBookNow() {
+        const message = encodeURIComponent("Hello, I am ____ , and I saw your Massage Quest website. Can I book a massage for ___");
+        if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            if (confirm('Would you like to call (909) 747-2735?')) {
+                window.location.href = 'tel:9097472735';
+            } else {
+                window.location.href = 'sms:9097472735?body=' + message;
+            }
+        } else {
+            window.location.href = 'mailto:jericascott@yahoo.com?subject=Massage Booking Inquiry&body=' + message;
+        }
+    }
+    function handleMapIt() {
+        const address = encodeURIComponent('112 9th St, Huntington Beach, CA 92648');
+        if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // Try Apple Maps for iOS, Google Maps for Android
+            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                window.location.href = 'maps://?q=' + address;
+            } else {
+                window.location.href = 'geo:0,0?q=' + address;
+            }
+        } else {
+            window.open('https://www.google.com/maps/search/?api=1&query=' + address, '_blank');
+        }
+    }
+    </script>
+</body>
+</html>
