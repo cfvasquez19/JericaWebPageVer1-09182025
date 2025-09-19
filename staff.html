@@ -8,11 +8,20 @@
 </head>
 <body>
     <nav>
-        <button class="book-now" onclick="handleBookNow()">Book Now</button>
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="staff.html">Staff</a>
-        <a href="contact.html">Contact</a>
+        <div class="nav-container">
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="staff.html">Staff</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <button class="book-now desktop-book-now" onclick="handleBookNow()">Book Now</button>
+        </div>
     </nav>
     <header>
         <img src="assets/images/IMG_8873-1.webp" alt="Header Image" class="header-img">
@@ -24,7 +33,7 @@
             <div class="staff-card">
                 <img src="assets/images/IMG_8873-1.webp" alt="Jerica - Massage Therapist" class="staff-img">
                 <h2>Jerica</h2>
-                <p>I starting doing massage therapy in 2011<br>I truly love what I do!! I want to add quality to your life and bring you nothing but pure joy. I am intuitive, caring, open minded, and am flowing with positive energy. I specialize in many different modalities of massage and also customize your massage to your needs. I take pride in providing top notch quality care. I look forward to meeting you!</p>
+                <p>I starting doing massage therapy in 2011.<br>I truly love what I do!! I want to add quality to your life and bring you nothing but pure joy. I am intuitive, caring, open minded, and am flowing with positive energy. I specialize in many different modalities of massage and also customize your massage to your needs. I take pride in providing top notch quality care. I look forward on working you!</p>
                 <h6>AI Generated below</h6>
                 <p>Certified Massage Therapist & Owner<br>Specializing in Swedish, deep tissue, Lomi Lomi, sports, and light touch massage. Passionate about helping clients achieve relaxation and wellness.</p>
             </div>
@@ -75,11 +84,8 @@
     function handleBookNow() {
         const message = encodeURIComponent("Hello, I am ____ , and I saw your Massage Quest website. Can I book a massage for ___");
         if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            if (confirm('Would you like to call (909) 747-2735?')) {
-                window.location.href = 'tel:9097472735';
-            } else {
-                window.location.href = 'sms:9097472735?body=' + message;
-            }
+            // Go straight to text messaging on mobile
+            window.location.href = 'sms:9097472735?body=' + message;
         } else {
             window.location.href = 'mailto:jericascott@yahoo.com?subject=Massage Booking Inquiry&body=' + message;
         }

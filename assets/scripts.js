@@ -1,4 +1,31 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Mobile navigation toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (hamburgerBtn && navLinks) {
+        hamburgerBtn.addEventListener('click', function() {
+            hamburgerBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a navigation link
+        navLinks.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                hamburgerBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!hamburgerBtn.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburgerBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    }
+
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -28,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Gallery slider functionality with auto-play and fullscreen
+    // Gallery slider functionality with auto-play
     const sliderWindow = document.querySelector('.slider-window');
     const sliderImgs = document.querySelectorAll('.slider-img');
     const prevBtn = document.querySelector('.slider-btn.prev');
@@ -68,84 +95,43 @@ document.addEventListener('DOMContentLoaded', function() {
         startAutoPlay();
     }
 
-    // Fullscreen feature for slider images (gallery)
-    if (sliderImgs.length) {
-        sliderImgs.forEach(function(img) {
-            img.addEventListener('click', function() {
-                if (!img.classList.contains('img-fullscreen')) {
-                    // Create overlay
-                    const overlay = document.createElement('div');
-                    overlay.className = 'img-overlay';
-                    overlay.style.position = 'fixed';
-                    overlay.style.top = '0';
-                    overlay.style.left = '0';
-                    overlay.style.width = '100vw';
-                    overlay.style.height = '100vh';
-                    overlay.style.background = 'rgba(0,0,0,0.85)';
-                    overlay.style.zIndex = '9998';
-                    overlay.appendChild(img);
-                    document.body.appendChild(overlay);
-                    img.classList.add('img-fullscreen');
-                    img.style.position = 'absolute';
-                    img.style.top = '50%';
-                    img.style.left = '50%';
-                    img.style.transform = 'translate(-50%, -50%)';
-                    img.style.width = '90vw';
-                    img.style.height = '90vh';
-                    img.style.objectFit = 'contain';
-                    img.style.background = 'none';
-                    img.style.margin = '0';
-                    img.style.borderRadius = '0';
-                    img.style.boxShadow = 'none';
-                    img.style.cursor = 'pointer';
-                    img.style.transition = 'none';
-                    overlay.addEventListener('click', function() {
-                        img.classList.remove('img-fullscreen');
-                        img.removeAttribute('style');
-                        document.querySelector('.slider-window').appendChild(img);
-                        overlay.remove();
-                    });
-                }
-            });
+    // Header image expansion functionality (25% screen size)
+    const headerImageElement = document.querySelector('.header-img');
+    if (headerImageElement) {
+        // Create backdrop element
+        const backdrop = document.createElement('div');
+        backdrop.className = 'header-img-backdrop';
+        document.body.appendChild(backdrop);
+        
+        // Handle header image click
+        headerImageElement.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (headerImageElement.classList.contains('header-img-expanded')) {
+                // Collapse image
+                headerImageElement.classList.remove('header-img-expanded');
+                backdrop.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                // Expand image to 25% screen size
+                headerImageElement.classList.add('header-img-expanded');
+                backdrop.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         });
-    }
-
-    // Fullscreen feature for header image
-    const headerImg = document.querySelector('.header-img');
-    if (headerImg) {
-        headerImg.addEventListener('click', function() {
-            if (!headerImg.classList.contains('img-fullscreen')) {
-                const overlay = document.createElement('div');
-                overlay.className = 'img-overlay';
-                overlay.style.position = 'fixed';
-                overlay.style.top = '0';
-                overlay.style.left = '0';
-                overlay.style.width = '100vw';
-                overlay.style.height = '100vh';
-                overlay.style.background = 'rgba(0,0,0,0.85)';
-                overlay.style.zIndex = '9998';
-                overlay.appendChild(headerImg);
-                document.body.appendChild(overlay);
-                headerImg.classList.add('img-fullscreen');
-                headerImg.style.position = 'absolute';
-                headerImg.style.top = '50%';
-                headerImg.style.left = '50%';
-                headerImg.style.transform = 'translate(-50%, -50%)';
-                headerImg.style.width = '90vw';
-                headerImg.style.height = '90vh';
-                headerImg.style.objectFit = 'contain';
-                headerImg.style.background = 'none';
-                headerImg.style.margin = '0';
-                headerImg.style.borderRadius = '0';
-                headerImg.style.boxShadow = 'none';
-                headerImg.style.cursor = 'pointer';
-                headerImg.style.transition = 'none';
-                overlay.addEventListener('click', function() {
-                    headerImg.classList.remove('img-fullscreen');
-                    headerImg.removeAttribute('style');
-                    document.querySelector('header').insertBefore(headerImg, document.querySelector('header').firstChild);
-                    overlay.remove();
-                });
+        
+        // Handle backdrop click to close
+        backdrop.addEventListener('click', function() {
+            headerImageElement.classList.remove('header-img-expanded');
+            backdrop.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Handle ESC key to close
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && headerImageElement.classList.contains('header-img-expanded')) {
+                headerImageElement.classList.remove('header-img-expanded');
+                backdrop.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
     }
@@ -160,28 +146,77 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalNextBtn = document.getElementById('modalNext');
 
     function openFullscreenModal(index) {
+        if (!fullscreenModal || !fullscreenImg || !galleryImages[index]) return;
         currentModalIndex = index;
         fullscreenImg.src = galleryImages[index].src;
+        fullscreenImg.alt = galleryImages[index].alt || 'Gallery Image';
         fullscreenModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
     }
+    
     function closeFullscreenModal() {
+        if (!fullscreenModal) return;
         fullscreenModal.style.display = 'none';
+        document.body.style.overflow = '';
     }
+    
     function showPrevModalImg() {
+        if (galleryImages.length === 0) return;
         currentModalIndex = (currentModalIndex - 1 + galleryImages.length) % galleryImages.length;
-        fullscreenImg.src = galleryImages[currentModalIndex].src;
+        if (fullscreenImg && galleryImages[currentModalIndex]) {
+            fullscreenImg.src = galleryImages[currentModalIndex].src;
+            fullscreenImg.alt = galleryImages[currentModalIndex].alt || 'Gallery Image';
+        }
     }
+    
     function showNextModalImg() {
+        if (galleryImages.length === 0) return;
         currentModalIndex = (currentModalIndex + 1) % galleryImages.length;
-        fullscreenImg.src = galleryImages[currentModalIndex].src;
+        if (fullscreenImg && galleryImages[currentModalIndex]) {
+            fullscreenImg.src = galleryImages[currentModalIndex].src;
+            fullscreenImg.alt = galleryImages[currentModalIndex].alt || 'Gallery Image';
+        }
     }
-    galleryImages.forEach((img, i) => {
-        img.addEventListener('click', () => openFullscreenModal(i));
-    });
-    closeModalBtn.addEventListener('click', closeFullscreenModal);
-    modalPrevBtn.addEventListener('click', showPrevModalImg);
-    modalNextBtn.addEventListener('click', showNextModalImg);
-    fullscreenModal.addEventListener('click', function(e) {
-        if (e.target === fullscreenModal) closeFullscreenModal();
-    });
+    
+    // Add event listeners only if elements exist
+    if (galleryImages.length && fullscreenModal && fullscreenImg) {
+        galleryImages.forEach((img, i) => {
+            img.addEventListener('click', () => openFullscreenModal(i));
+        });
+    }
+    
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeFullscreenModal);
+    }
+    
+    if (modalPrevBtn) {
+        modalPrevBtn.addEventListener('click', showPrevModalImg);
+    }
+    
+    if (modalNextBtn) {
+        modalNextBtn.addEventListener('click', showNextModalImg);
+    }
+    
+    if (fullscreenModal) {
+        fullscreenModal.addEventListener('click', function(e) {
+            if (e.target === fullscreenModal) closeFullscreenModal();
+        });
+        
+        // Add keyboard support
+        document.addEventListener('keydown', function(e) {
+            if (fullscreenModal.style.display === 'flex') {
+                switch(e.key) {
+                    case 'Escape':
+                        closeFullscreenModal();
+                        break;
+                    case 'ArrowLeft':
+                        showPrevModalImg();
+                        break;
+                    case 'ArrowRight':
+                        showNextModalImg();
+                        break;
+                }
+            }
+        });
+    }
 });

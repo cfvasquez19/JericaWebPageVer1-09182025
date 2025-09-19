@@ -59,11 +59,20 @@
 </head>
 <body>
     <nav>
-        <button class="book-now" onclick="handleBookNow()">Book Now</button>
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="staff.html">Staff</a>
-        <a href="contact.html">Contact</a>
+        <div class="nav-container">
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="staff.html">Staff</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <button class="book-now desktop-book-now" onclick="handleBookNow()">Book Now</button>
+        </div>
     </nav>
     <header>
         <img src="assets/images/IMG_8873-1.webp" alt="Header Image" class="header-img">
@@ -85,6 +94,55 @@
                     <img src="assets/images/IMG_8877.webp" alt="Sample 3" class="slider-img">
                 </div>
                 <button class="slider-btn next">&#10095;</button>
+            </div>
+        </section>
+        <section class="amenities">
+            <h2>Amenities</h2>
+            <div class="amenities-grid">
+                <div class="amenity-item">
+                    <span class="amenity-icon">🕯️</span>
+                    Candles
+                </div>
+                <div class="amenity-item">
+                    <span class="amenity-icon">🌿</span>
+                    Essential Oils
+                </div>
+                <div class="amenity-item">
+                    <span class="amenity-icon">🅿️</span>
+                    Free Parking
+                </div>
+                <div class="amenity-item">
+                    <span class="amenity-icon">🔥</span>
+                    Heated Massage Tables
+                </div>
+                <div class="amenity-item">
+                    <span class="amenity-icon">🌡️</span>
+                    Heating Pad
+                </div>
+                <div class="amenity-item">
+                    <span class="amenity-icon">🫧</span>
+                    Massage Oils
+                </div>
+                <div class="amenity-item">
+                    <span class="amenity-icon">🛏️</span>
+                    Massage Table
+                </div>
+                <div class="amenity-item">
+                    <span class="amenity-icon">🎵</span>
+                    Music
+                </div>
+                <div class="amenity-item">
+                    <span class="amenity-icon">🔒</span>
+                    Privacy
+                </div>
+                <div class="amenity-item">
+                    <span class="amenity-icon">🚪</span>
+                    Private Room
+                </div>
+                <div class="amenity-item">
+                    <span class="amenity-icon">🚿</span>
+                    Shower
+                </div>
             </div>
         </section>
     </main>
@@ -138,11 +196,8 @@
     function handleBookNow() {
         const message = encodeURIComponent("Hello, I am ____ , and I saw your Massage Quest website. Can I book a massage for ___");
         if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-            if (confirm('Would you like to call (909) 747-2735?')) {
-                window.location.href = 'tel:9097472735';
-            } else {
-                window.location.href = 'sms:9097472735?body=' + message;
-            }
+            // Go straight to text messaging on mobile
+            window.location.href = 'sms:9097472735?body=' + message;
         } else {
             window.location.href = 'mailto:jericascott@yahoo.com?subject=Massage Booking Inquiry&body=' + message;
         }
