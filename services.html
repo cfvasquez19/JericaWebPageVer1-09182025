@@ -24,7 +24,7 @@
         </div>
     </nav>
     <header>
-        <img src="assets/images/IMG_8873-1.webp" alt="Header Image" class="header-img">
+        <img src="assets/images/IMG_8872.webp" alt="Header Image" class="header-img">
         <h1>Bodywork Services</h1>
     </header>
     <main>
@@ -94,7 +94,7 @@
                 <img src="assets/images/social-outline.svg" alt="Social Media" style="width:32px;height:32px;margin-bottom:0.5rem;display:block;margin-left:auto;margin-right:auto;">
                 <!-- Add your social media links below -->
                 <a href="https://www.instagram.com/_jericas.journey?igsh=MTc4MmM1YmI2Ng==" target="_blank">Instagram</a><br>
-                <a href="https://www.facebook.com/jerica.scott.1" target="_blank">Facebook</a><br>
+                <a href="https://www.facebook.com/people/MassageQuest/100036867957043/" target="_blank">Facebook</a><br>
                 <a href="https://www.tiktok.com/@jericafitness" target="_blank">TikTok</a>
             </div>
         </div>
@@ -109,6 +109,20 @@
                 window.location.href = 'sms:9097472735?body=' + message;
             } else {
                 window.location.href = 'mailto:jericascott@yahoo.com?subject=Massage Booking Inquiry&body=' + message;
+            }
+        }
+
+        function handleMapIt() {
+            const address = encodeURIComponent('112 9th St, Huntington Beach, CA 92648');
+            if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                // Try Apple Maps for iOS, Google Maps for Android
+                if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                    window.location.href = 'maps://?q=' + address;
+                } else {
+                    window.location.href = 'geo:0,0?q=' + address;
+                }
+            } else {
+                window.open('https://www.google.com/maps/search/?api=1&query=' + address, '_blank');
             }
         }
     </script>
