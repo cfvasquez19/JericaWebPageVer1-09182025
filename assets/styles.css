@@ -180,10 +180,13 @@ header {
     display: block;
     margin: 0 auto 1em auto;
     max-width: 180px;
-    border-radius: 12px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
     box-shadow: 0 2px 8px rgba(0,0,0,0.10);
     cursor: pointer;
     transition: all 0.3s ease;
+    object-fit: cover;
 }
 
 .header-img:hover {
@@ -198,11 +201,11 @@ header {
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
     max-width: none !important;
-    width: calc(25vw + 20px) !important;
-    height: calc(25vh + 5px) !important;
+    width: 300px !important;
+    height: 300px !important;
     object-fit: cover !important;
     z-index: 9999 !important;
-    border-radius: 12px !important;
+    border-radius: 50% !important;
     box-shadow: 0 10px 40px rgba(0,0,0,0.4) !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
@@ -579,13 +582,18 @@ gallery {
         position: static;
     }
     .header-img {
-        max-width: 100px;
+        max-width: 220px;
+        width: 220px;
+        height: 220px;
+        border-radius: 75%;
+        object-fit: cover;
     }
     
     /* Mobile expanded header image */
     .header-img-expanded {
-        width: calc(25vw + 100px) !important;
-        height: calc(25vh + 5px) !important;
+        width: calc(25vw + 140px) !important;
+        height: calc(25vh + 45px) !important;
+        border-radius: 50% !important;
     }
     .gallery-slider {
         max-width: calc(100vw - 50px);
