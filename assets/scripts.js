@@ -29,9 +29,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('formResponse').textContent = 'Thank you for contacting us! We will get back to you soon.';
-            contactForm.reset();
+            // Don't prevent default - let Formspree handle the submission
+            // Show immediate feedback to user
+            const formResponse = document.getElementById('formResponse');
+            if (formResponse) {
+                formResponse.textContent = 'Thank you for contacting us! We will get back to you soon.';
+            }
+            
+            // Let the form submit naturally to Formspree
+            // The form will redirect or show Formspree's confirmation page
         });
     }
 
